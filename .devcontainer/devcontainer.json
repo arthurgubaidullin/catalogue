@@ -23,7 +23,8 @@
         "github.vscode-github-actions",
         "dbaeumer.vscode-eslint",
         "EditorConfig.EditorConfig",
-        "ms-vscode.makefile-tools"
+        "ms-vscode.makefile-tools",
+        "astro-build.astro-vscode"
       ]
     }
   }
