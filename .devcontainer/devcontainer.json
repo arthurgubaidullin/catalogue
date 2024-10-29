@@ -24,7 +24,8 @@
         "dbaeumer.vscode-eslint",
         "EditorConfig.EditorConfig",
         "ms-vscode.makefile-tools",
-        "astro-build.astro-vscode"
+        "astro-build.astro-vscode",
+        "vitest.explorer"
       ]
     }
   }
