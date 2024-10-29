@@ -3,6 +3,9 @@
   "workspaces": [
     "web-app"
   ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present"
+  },
   "private": true,
   "devDependencies": {
     "eslint": "^9.13.0",
