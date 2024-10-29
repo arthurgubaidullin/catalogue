@@ -25,7 +25,8 @@
         "EditorConfig.EditorConfig",
         "ms-vscode.makefile-tools",
         "astro-build.astro-vscode",
-        "vitest.explorer"
+        "vitest.explorer",
+        "bradlc.vscode-tailwindcss"
       ]
     }
   }
