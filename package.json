@@ -1,9 +1,11 @@
 {
   "name": "catalogue",
   "workspaces": [
+    "catalogue",
     "web-app"
   ],
   "scripts": {
+    "test": "vitest --pass-with-no-tests --run",
     "build": "npm run build --workspaces --if-present"
   },
   "private": true,
