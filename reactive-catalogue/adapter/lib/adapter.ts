@@ -19,7 +19,7 @@ export class ReactiveCatalogueAdapter implements ReactiveCatalogue {
     return this.#items;
   }
 
-  add(item: Item) {
+  async add(item: Item) {
     this.#catalogue.add(item);
 
     this.#items.value = this.#catalogue.items();
