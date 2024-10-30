@@ -17,7 +17,7 @@ export class FakeCatalogue implements Catalogue {
     }
   }
 
-  add(item: Item) {
+  async add(item: Item) {
     if (this.#items.find((_item) => _item.id === item.id)) {
       return;
     }
