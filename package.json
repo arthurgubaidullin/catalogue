@@ -1,7 +1,8 @@
 {
   "name": "catalogue",
   "workspaces": [
-    "catalogue",
+    "catalogue/type",
+    "catalogue/fake",
     "web-app"
   ],
   "scripts": {

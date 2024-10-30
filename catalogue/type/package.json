@@ -1,0 +1,14 @@
+{
+  "name": "catalogue-type",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc --build",
+    "test": "vitest --pass-with-no-tests --run"
+  },
+  "private": true
+}
