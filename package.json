@@ -5,6 +5,7 @@
     "reactive-catalogue/type",
     "catalogue/fake",
     "reactive-catalogue/adapter",
+    "program/factory",
     "web-app"
   ],
   "scripts": {
