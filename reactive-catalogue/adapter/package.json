@@ -6,8 +6,8 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "dependencies": {
-    "reactive-catalogue-type": "^0.0.1",
-    "catalogue-type": "^0.0.1"
+    "catalogue-type": "^0.0.1",
+    "reactive-catalogue-type": "^0.0.1"
   },
   "devDependencies": {},
   "scripts": {
