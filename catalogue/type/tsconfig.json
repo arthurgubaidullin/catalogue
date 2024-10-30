@@ -7,5 +7,6 @@
   },
   "files": [],
   "include": ["**/*.ts"],
-  "exclude": ["dist", "**/*.spec.ts"]
+  "exclude": ["dist", "**/*.spec.ts"],
+  "references": []
 }
