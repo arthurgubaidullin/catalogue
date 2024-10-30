@@ -64,7 +64,7 @@ const CroppedUUID = ({ id }: { id: string }) => {
   );
 };
 
-export const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
+const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
   const renderedRows = catalogue.items().value.map((item) =>
     item.value ? (
       <tr key={item.value.id}>
