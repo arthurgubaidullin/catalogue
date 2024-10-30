@@ -48,8 +48,8 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
             </div>
 
             <div className="card-actions">
-              <input class="btn btn-primary" type="submit" />
-              <input class="btn" type="reset" />
+              <input className="btn btn-primary" type="submit" />
+              <input className="btn" type="reset" />
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@ const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
 
   return (
     <section className="grid grid-cols-1 gap-4">
-      <h2 class="text-4xl col-span-4">Items</h2>
+      <h2 className="text-4xl col-span-4">Items</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           <thead>
@@ -99,7 +99,7 @@ export const Catalogue = () => {
 
   return (
     <section className="grid grid-cols-4 gap-8 m-4">
-      <h1 class="text-5xl col-span-4">Catalogue</h1>
+      <h1 className="text-5xl col-span-4">Catalogue</h1>
 
       <div className="lg:col-span-2 md:col-span-2 col-span-4">
         <Items catalogue={program.catalogue} />
