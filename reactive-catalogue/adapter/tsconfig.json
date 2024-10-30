@@ -7,7 +7,7 @@
   },
   "files": [],
   "include": ["**/*.ts"],
-  "exclude": ["dist", "**/*.spec.ts"],
+  "exclude": ["dist"],
   "references": [
     { "path": "../../catalogue/type" },
     { "path": "../../reactive-catalogue/type" }
