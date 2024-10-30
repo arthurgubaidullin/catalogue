@@ -4,7 +4,14 @@ import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 
 export default [
-  { ignores: ["**/dist/*", "**/.astro/*", "**/src/env.d.ts"] },
+  {
+    ignores: [
+      "**/node_modules/**",
+      "**/dist/*",
+      "**/.astro/*",
+      "**/src/env.d.ts",
+    ],
+  },
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
   },
