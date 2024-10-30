@@ -4,7 +4,7 @@ import { Signal, signal } from "@preact/signals";
 
 export class ReactiveCatalogueAdapter implements ReactiveCatalogue {
   readonly #catalogue: Catalogue;
-  readonly #items: Signal<Iterable<Item, void, unknown>>;
+  readonly #items: Signal<Iterable<Signal<Item | null>, void, unknown>>;
 
   static get(catalogue: Catalogue) {
     return new ReactiveCatalogueAdapter(catalogue);
@@ -12,16 +12,27 @@ export class ReactiveCatalogueAdapter implements ReactiveCatalogue {
 
   private constructor(catalogue: Catalogue) {
     this.#catalogue = catalogue;
-    this.#items = signal(catalogue.items());
+
+    this.#items = signal(this.iterator());
   }
 
   items() {
     return this.#items;
   }
 
+  private *iterator() {
+    for (const getItem of this.#catalogue.items()) {
+      const item = signal<Item | null>(null);
+
+      item.value = getItem();
+
+      yield item;
+    }
+  }
+
   async add(item: Item) {
     this.#catalogue.add(item);
 
-    this.#items.value = this.#catalogue.items();
+    this.#items.value = this.iterator();
   }
 }

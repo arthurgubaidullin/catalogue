@@ -64,12 +64,14 @@ export const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
   let i = 1;
 
   for (const item of items) {
-    renderedItems.push(
-      <tr key={item.id}>
-        <th>{i++}</th>
-        <td>{item.name}</td>
-      </tr>
-    );
+    if (item.value) {
+      renderedItems.push(
+        <tr key={item.value.id}>
+          <th>{i++}</th>
+          <td>{item.value.name}</td>
+        </tr>
+      );
+    }
   }
 
   return (
