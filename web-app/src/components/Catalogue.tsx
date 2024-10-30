@@ -1,8 +1,12 @@
+import type { Item } from "catalogue-type";
+import { useState } from "preact/hooks";
 import type { JSX } from "preact/jsx-runtime";
 import { ProgramFactory } from "program-factory";
 import type { ReactiveCatalogue } from "reactive-catalogue-type";
 
 const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
+  const [id, setId] = useState(crypto.randomUUID());
+
   return (
     <form
       onSubmit={(e) => {
@@ -10,29 +14,48 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
 
         const fd = new FormData(e.currentTarget);
 
-        catalogue.add({ id: fd.get("id") as string });
+        const item: Item = {
+          id,
+          name: fd.get("name") as string,
+        };
+
+        catalogue.add(item);
 
         e.currentTarget.reset();
+        setId(crypto.randomUUID());
       }}
     >
       <div className="card bg-base-100 w-full shadow-xl">
         <div className="card-body">
           <h2 className="card-title">Add Item Form</h2>
 
-          <label className="form-control w-full">
-            <div className="label">
-              <span className="label-text">What is item ID?</span>
-            </div>
-            <input
-              name="id"
-              type="text"
-              placeholder="Type here"
-              className="input input-bordered w-full"
-              required
-            />
+          <div className="grid gap-0 mb-4">
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text">What is item ID?</span>
+              </div>
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full"
+                value={id}
+                disabled
+              />
+            </label>
 
-            <div className="label"></div>
-          </label>
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text">What is item name?</span>
+              </div>
+              <input
+                name="name"
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full"
+                required
+              />
+            </label>
+          </div>
 
           <div className="card-actions">
             <input class="btn btn-primary" type="submit" />
@@ -53,7 +76,7 @@ export const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
     renderedItems.push(
       <tr key={item.id}>
         <th>{i++}</th>
-        <td>Cy Ganderton</td>
+        <td>{item.name}</td>
       </tr>
     );
   }
@@ -80,10 +103,10 @@ export const Catalogue = () => {
     <section className="grid grid-cols-4 gap-8 m-4">
       <h1 class="text-5xl col-span-4">Catalogue</h1>
 
-      <div className="lg:col-span-3 md:col-span-2 col-span-4">
+      <div className="lg:col-span-2 md:col-span-2 col-span-4">
         <Items catalogue={program.catalogue} />
       </div>
-      <div className="lg:col-span-1 md:col-span-2 col-span-4">
+      <div className="lg:col-span-2 md:col-span-2 col-span-4">
         <AddItemForm catalogue={program.catalogue} />
       </div>
     </section>
