@@ -1,6 +1,6 @@
+import { Signal, signal } from "@preact/signals";
 import { Catalogue, Item } from "catalogue-type";
 import { ReactiveCatalogue } from "reactive-catalogue-type";
-import { Signal, signal } from "@preact/signals";
 
 export class ReactiveCatalogueAdapter implements ReactiveCatalogue {
   readonly #catalogue: Catalogue;

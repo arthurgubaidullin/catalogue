@@ -1,3 +1,4 @@
+import type { Signal } from "@preact/signals";
 import type { Item } from "catalogue-type";
 import { useState } from "preact/hooks";
 import type { JSX } from "preact/jsx-runtime";
@@ -57,21 +58,28 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
   );
 };
 
-export const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
-  const items = catalogue.items().value;
-
-  const renderedItems: JSX.Element[] = [];
-  let i = 1;
-
-  for (const item of items) {
-    if (item.value) {
-      renderedItems.push(
+const Item = ({ item }: { item: Signal<Item | null> }) => {
+  const croppedId =
+    item.value && item.value.id.length > 8
+      ? item.value.id.slice(0, 4) + "…" + item.value.id.slice(-5, -1)
+      : null;
+  return (
+    <>
+      {item.value ? (
         <tr key={item.value.id}>
-          <th>{i++}</th>
+          <th>{croppedId}</th>
           <td>{item.value.name}</td>
         </tr>
-      );
-    }
+      ) : null}
+    </>
+  );
+};
+
+export const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
+  const renderedItems: JSX.Element[] = [];
+
+  for (const item of catalogue.items().value) {
+    renderedItems.push(<Item item={item} />);
   }
 
   return (
