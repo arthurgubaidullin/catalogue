@@ -2,7 +2,9 @@
   "name": "catalogue",
   "workspaces": [
     "catalogue/type",
+    "reactive-catalogue/type",
     "catalogue/fake",
+    "reactive-catalogue/adapter",
     "web-app"
   ],
   "scripts": {
