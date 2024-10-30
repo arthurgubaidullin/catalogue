@@ -66,9 +66,9 @@ export const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
   const renderedRows = catalogue.items().value.map((item) =>
     item.value ? (
       <tr key={item.value.id}>
-        <th>
+        <td>
           <CroppedUUID id={item.value.id} />
-        </th>
+        </td>
         <td>{item.value.name}</td>
       </tr>
     ) : null
