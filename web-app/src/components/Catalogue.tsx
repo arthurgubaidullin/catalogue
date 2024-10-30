@@ -1,7 +1,5 @@
-import type { Signal } from "@preact/signals";
 import type { Item } from "catalogue-type";
 import { useState } from "preact/hooks";
-import type { JSX } from "preact/jsx-runtime";
 import { ProgramFactory } from "program-factory";
 import type { ReactiveCatalogue } from "reactive-catalogue-type";
 
@@ -58,29 +56,23 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
   );
 };
 
-const Item = ({ item }: { item: Signal<Item | null> }) => {
-  const croppedId =
-    item.value && item.value.id.length > 8
-      ? item.value.id.slice(0, 4) + "…" + item.value.id.slice(-5, -1)
-      : null;
+const CroppedUUID = ({ id }: { id: string }) => {
   return (
-    <>
-      {item.value ? (
-        <tr key={item.value.id}>
-          <th>{croppedId}</th>
-          <td>{item.value.name}</td>
-        </tr>
-      ) : null}
-    </>
+    <span> {id.length > 8 ? id.slice(0, 4) + "…" + id.slice(-5, -1) : id}</span>
   );
 };
 
 export const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
-  const renderedItems: JSX.Element[] = [];
-
-  for (const item of catalogue.items().value) {
-    renderedItems.push(<Item item={item} />);
-  }
+  const renderedRows = catalogue.items().value.map((item) =>
+    item.value ? (
+      <tr key={item.value.id}>
+        <th>
+          <CroppedUUID id={item.value.id} />
+        </th>
+        <td>{item.value.name}</td>
+      </tr>
+    ) : null
+  );
 
   return (
     <div className="overflow-x-auto">
@@ -91,7 +83,7 @@ export const Items = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
             <th>Name</th>
           </tr>
         </thead>
-        <tbody>{renderedItems}</tbody>
+        <tbody>{renderedRows}</tbody>
       </table>
     </div>
   );

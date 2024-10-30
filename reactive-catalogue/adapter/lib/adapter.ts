@@ -4,7 +4,7 @@ import { ReactiveCatalogue } from "reactive-catalogue-type";
 
 export class ReactiveCatalogueAdapter implements ReactiveCatalogue {
   readonly #catalogue: Catalogue;
-  readonly #items: Signal<Iterable<Signal<Item | null>, void, unknown>>;
+  readonly #items: Signal<ReadonlyArray<Signal<Item | null>>>;
 
   static get(catalogue: Catalogue) {
     return new ReactiveCatalogueAdapter(catalogue);
@@ -13,7 +13,7 @@ export class ReactiveCatalogueAdapter implements ReactiveCatalogue {
   private constructor(catalogue: Catalogue) {
     this.#catalogue = catalogue;
 
-    this.#items = signal(this.iterator());
+    this.#items = signal(Array.from(this.iterator()));
   }
 
   items() {
@@ -35,6 +35,6 @@ export class ReactiveCatalogueAdapter implements ReactiveCatalogue {
   async add(item: Item) {
     this.#catalogue.add(item);
 
-    this.#items.value = this.iterator();
+    this.#items.value = Array.from(this.iterator());
   }
 }
