@@ -7,7 +7,11 @@
   "type": "module",
   "dependencies": {
     "reactive-catalogue-type": "^0.0.1",
-    "catalogue-type": "^0.0.1"
+    "catalogue-fake": "^0.0.1",
+    "reactive-catalogue-adapter": "^0.0.1"
+  },
+  "peerDependencies": {
+    "@preact/signals": "^1.3.0"
   },
   "devDependencies": {},
   "scripts": {
