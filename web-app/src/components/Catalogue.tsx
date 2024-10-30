@@ -9,6 +9,9 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
 
   return (
     <form
+      onReset={() => {
+        setId(crypto.randomUUID());
+      }}
       onSubmit={(e) => {
         e.preventDefault();
 
@@ -22,7 +25,6 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
         catalogue.add(item);
 
         e.currentTarget.reset();
-        setId(crypto.randomUUID());
       }}
     >
       <div className="card bg-base-100 w-full shadow-xl">
@@ -30,19 +32,6 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
           <h2 className="card-title">Add Item Form</h2>
 
           <div className="grid gap-0 mb-4">
-            <label className="form-control w-full">
-              <div className="label">
-                <span className="label-text">What is item ID?</span>
-              </div>
-              <input
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full"
-                value={id}
-                disabled
-              />
-            </label>
-
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">What is item name?</span>
@@ -59,6 +48,7 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
 
           <div className="card-actions">
             <input class="btn btn-primary" type="submit" />
+            <input class="btn" type="reset" />
           </div>
         </div>
       </div>
