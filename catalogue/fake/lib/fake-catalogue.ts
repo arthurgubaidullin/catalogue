@@ -13,7 +13,7 @@ export class FakeCatalogue implements Catalogue {
 
   *items() {
     for (const item of this.#items) {
-      yield () => item;
+      yield () => Promise.resolve(item);
     }
   }
 

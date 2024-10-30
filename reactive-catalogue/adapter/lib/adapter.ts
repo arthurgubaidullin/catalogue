@@ -24,7 +24,9 @@ export class ReactiveCatalogueAdapter implements ReactiveCatalogue {
     for (const getItem of this.#catalogue.items()) {
       const item = signal<Item | null>(null);
 
-      item.value = getItem();
+      getItem().then((data) => {
+        item.value = data;
+      });
 
       yield item;
     }
