@@ -4,7 +4,7 @@ export class FakeCatalogue implements Catalogue {
   readonly #items: Array<Item>;
 
   private constructor() {
-    this.#items = [{ id: "01" }, { id: "02" }, { id: "03" }, { id: "04" }];
+    this.#items = [];
   }
 
   static get() {
