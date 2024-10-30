@@ -42,6 +42,7 @@ const AddItemForm = ({ catalogue }: { catalogue: ReactiveCatalogue }) => {
                 placeholder="Type here"
                 className="input input-bordered w-full"
                 required
+                autoComplete="off"
               />
             </label>
           </div>
