@@ -7,5 +7,11 @@
   },
   "files": [],
   "include": ["**/*.ts"],
-  "exclude": ["dist", "**/*.spec.ts"]
+  "exclude": ["dist", "**/*.spec.ts"],
+  "references": [
+    { "path": "../../reactive-catalogue/type" },
+    { "path": "../../reactive-catalogue/adapter" },
+    { "path": "../../catalogue/type" },
+    { "path": "../../catalogue/fake" }
+  ]
 }
